@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.Jntu.sas.MyrestUrl;
-
+import com.Jntu.sas.beans.Registration_table;
 
 @Service
 @EnableAutoConfiguration
@@ -19,18 +19,19 @@ import com.Jntu.sas.MyrestUrl;
 public class Status_checking {
 	@Autowired
 	MyrestUrl resturl;
+	@Autowired
+	Registration_table studentdetails;
 
 	@SuppressWarnings("unchecked")
 	public ArrayList<String> checks(String name, String password, HttpSession session) {
-		ArrayList<String> details = new ArrayList<>();
-		details.add(name);
 		String[] values = password.split("/", 4);
-		details.add(values[0]);
-		details.add(values[1]);
-		details.add(values[3]);
+		studentdetails.setName(name);
+		studentdetails.setBoard(values[0]);
+		studentdetails.setGpa(values[1]);
+		studentdetails.setPercentage(Integer.valueOf(values[3]));
 		RestTemplate restcall = new RestTemplate();
 		String url = resturl.geturl() + "Status_check/";
-		return restcall.postForObject(url, details, ArrayList.class);
+		return restcall.postForObject(url, studentdetails, ArrayList.class);
 
 	}
 

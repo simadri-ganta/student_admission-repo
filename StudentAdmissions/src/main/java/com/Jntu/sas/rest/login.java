@@ -1,4 +1,5 @@
 package com.Jntu.sas.rest;
+
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -15,7 +16,7 @@ import com.Jntu.sas.repositories.Selected_students_repo;
 
 @RestController
 @RequestMapping("/login")
-public class login {
+public class login{
 	@Autowired
 	Admin_table_repo repo;
 	@Autowired
@@ -24,12 +25,12 @@ public class login {
 	Selected_students_repo selected_repo;
 
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public ArrayList<String> meth(@RequestBody ArrayList<String> list) {
+	public ArrayList<String> meth(@RequestBody Admin_table list){
 		System.out.println(" ciming" + list.toString());
 		ArrayList<String> list1 = new ArrayList<>();
-		Optional<Admin_table> object = repo.findById(list.get(0));
+		Optional<Admin_table> object = repo.findById(list.getId());
 		object.ifPresent(Admin_table -> {
-			if (Admin_table.getPass().equals(list.get(1))) {
+			if (Admin_table.getPass().equals(list.getPass())) {
 				list1.add("valid");
 				list1.add(Admin_table.getAdmin().getCollege_code());
 				if (!Admin_table.getAdmin().getCollege_code().equals("admin")) {

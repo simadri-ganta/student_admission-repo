@@ -73,8 +73,8 @@ body {
 				<br>
 				<br> <input type="hidden" name="status_code" value="admin1ogin">
 
-				username <input type="text" name="name"><br>
-				<br> password <input type="password" name="pass"><br>
+				username <input type="text" name="name" required><br>
+				<br> password <input type="password" name="pass" required><br>
 				<br> <input type="submit"><br>
 				<br>
 				<br> <a href="newadmissionform">apply for new admission</a>

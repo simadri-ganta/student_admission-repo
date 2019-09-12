@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.Jntu.sas.MyrestUrl;
+import com.Jntu.sas.beans.Admin_table;
 
 @Service
 @EnableAutoConfiguration
@@ -18,9 +19,9 @@ public class Login_call {
 	MyrestUrl resturl;
 
 	@SuppressWarnings("unchecked")
-	public ArrayList<String> request(ArrayList<String> list) {
+	public ArrayList<String> request(Admin_table loginbean) {
 		RestTemplate temple = new RestTemplate();
 		String url = resturl.geturl() + "login/";
-		return temple.postForObject(url, list, ArrayList.class);
+		return temple.postForObject(url, loginbean, ArrayList.class);
 	}
 }

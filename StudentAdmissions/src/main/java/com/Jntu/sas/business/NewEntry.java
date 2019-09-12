@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.Jntu.sas.MyrestUrl;
+import com.Jntu.sas.beans.Registration_table;
 
 @Service
 @EnableAutoConfiguration
@@ -16,26 +17,11 @@ import com.Jntu.sas.MyrestUrl;
 public class NewEntry {
 	@Autowired
 	MyrestUrl resturl;
-
-	public boolean send(String name, String board, String marks, String gpa, String percentage, String school,
-			String department, String college1, String college2) {
-		ArrayList<String> values = new ArrayList<String>();
-		values.add(name);
-		values.add(board);
-		values.add(marks);
-		if (gpa != null) {
-			values.add(gpa);
-		} else {
-			double gpa1 = ((Integer.parseInt(percentage) * 9.5) / 100);
-			values.add(String.valueOf(gpa1));
-		}
-		values.add(percentage);
-		values.add(school);
-		values.add(department);
-		values.add(college1);
-		values.add(college2);
+    @Autowired
+    Registration_table studentdetails;
+	public boolean send(Registration_table studentdetails) {
 		RestTemplate restcall = new RestTemplate();
-		if (!restcall.postForObject(resturl.geturl() + "new_applicantion/", values, ArrayList.class).isEmpty())
+		if (!restcall.postForObject(resturl.geturl() + "new_applicantion/", studentdetails, ArrayList.class).isEmpty())
 			return true;
 		else
 			return false;

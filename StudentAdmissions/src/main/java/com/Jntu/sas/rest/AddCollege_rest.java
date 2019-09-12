@@ -22,19 +22,14 @@ public class AddCollege_rest {
 	Number_of_colleges_repo college_repo;
 	@Autowired
 	Admin_table admin_entity;
-	@Autowired
-	Number_of_colleges college_entity;
 
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public ArrayList<String> meth(@RequestBody ArrayList<String> list) {
-		System.out.println(" ciming" + list.toString());
+	public ArrayList<String> meth(@RequestBody Number_of_colleges college_entity) {
 		ArrayList<String> list1 = new ArrayList<>();
-		college_entity.setCollege_name(list.get(0));
-		college_entity.setCollege_code(list.get(1));
-		college_entity.setCollege_rank(list.get(2));
 		college_repo.save(college_entity);
-		admin_entity.setId(list.get(0) + list.get(1));
-		admin_entity.setPass(list.get(2) + list.get(0) + list.get(1));
+		admin_entity.setId(college_entity.getCollege_name() + college_entity.getCollege_code());
+		admin_entity.setPass(
+				college_entity.getCollege_rank() + college_entity.getCollege_code() + college_entity.getCollege_code());
 		admin_entity.setAdmin(college_entity);
 		admin_repo.save(admin_entity);
 		list1.add("done");

@@ -1,4 +1,5 @@
 package com.Jntu.sas.controller;
+
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
@@ -8,12 +9,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.Jntu.sas.beans.Admin_table;
 import com.Jntu.sas.business.Login_call;
 
 @Controller
 public class Login_control {
 	@Autowired
 	Login_call login;
+	@Autowired
+	Admin_table loginbean;
 
 	@RequestMapping("login_admin_home")
 	public ModelAndView home1(String name, String pass, HttpSession session) {
@@ -24,15 +28,12 @@ public class Login_control {
 			modelview.setViewName("index");
 			return modelview;
 		} else {
-			ArrayList<String> list = new ArrayList<>();
-			list.add(name);
-			list.add(pass);
-			ArrayList<String> status = login.request(list);
+			loginbean.setId(name);
+			loginbean.setPass(pass);
+			ArrayList<String> status = login.request(loginbean);
 			if (!status.isEmpty()) {
 				switch (status.get(0)) {
 				case "valid":
-					System.out.println("validdf");
-					System.out.println(status.toString());
 					if (status.get(1).equals("admin")) {
 						modelview.setViewName("Main_admin/admin_left");
 						return modelview;

@@ -110,7 +110,7 @@ td {
 						<td>College choice<%
 							out.print(i + 1);
 						%></td>
-						<td><select name="<%out.print("college" + (i + 1));%>">
+						<td><select name="<%out.print("college_choice" + (i + 1));%>">
 								<option>select college</option>
 								<%
 									RestTemplate template=new RestTemplate();

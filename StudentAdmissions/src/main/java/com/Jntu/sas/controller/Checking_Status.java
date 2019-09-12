@@ -1,4 +1,5 @@
 package com.Jntu.sas.controller;
+
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.Jntu.sas.business.Status_checking;
+
 @Controller
 public class Checking_Status {
 	@Autowired

@@ -1,4 +1,5 @@
 package com.Jntu.sas.rest;
+
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,27 +20,20 @@ public class Status_check {
 	Registration_table_repo registeration_repo;
 
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public ArrayList<String> meth(@RequestBody ArrayList<String> list) {
-		String name = list.get(0);
-		String board = list.get(1);
-		String gpa = list.get(2);
-		String percentage = list.get(3);
-		System.out.println(name+"	"+board+"	"+gpa+"	"+percentage);  
-		ArrayList<String> list1=new ArrayList<>();
-		if (registeration_repo.findById(name) != null) {
-			Registration_table obj = registeration_repo.findById(name).get();
-			if(obj.getBoard().equals(board)&&obj.getGpa().equals(gpa)&&obj.getPercentage()==Integer.parseInt(percentage)) {
-				list1.add(obj.getStatus_application());
-				list1.add(obj.getCollege_choice2());
-			}else {
+	public ArrayList<String> meth(@RequestBody Registration_table studentdetails) {
+		ArrayList<String> list1 = new ArrayList<>();
+		if (registeration_repo.findById(studentdetails.getName()) != null) {
+			Registration_table databasedetails = registeration_repo.findById(studentdetails.getName()).get();
+			if (databasedetails.getBoard().equals(studentdetails.getBoard()) && databasedetails.getGpa().equals(studentdetails.getGpa())
+					&& databasedetails.getPercentage() == studentdetails.getPercentage()) {
+				list1.add(databasedetails.getStatus_application());
+				list1.add(databasedetails.getCollege_choice2());
+			} else {
 				list1.add("pass_wrong");
 			}
-
-		}else
-		{
+		} else {
 			list1.add("user_invalid");
 		}
-		System.out.println(list1);
 		return list1;
 	}
 

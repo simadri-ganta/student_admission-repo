@@ -1,4 +1,5 @@
 package com.Jntu.sas.rest;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -80,7 +81,7 @@ public class Confirm_allotement_rest {
 				registration_repo.findById(eachobject.getName()).get().setStatus_application("accepted");
 				selected_student_repo.save(selected_entity);
 				count++;
-				
+
 				System.out.println(i++);
 
 			} else {
@@ -94,8 +95,8 @@ public class Confirm_allotement_rest {
 			}
 
 		}
-ArrayList<Integer> countlist=new ArrayList<>();
-countlist.add(count);
+		ArrayList<Integer> countlist = new ArrayList<>();
+		countlist.add(count);
 		return countlist;
 
 	}

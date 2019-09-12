@@ -10,6 +10,8 @@ import com.Jntu.sas.beans.Registration_table;
 @Repository
 public interface Registration_table_repo extends JpaRepository<Registration_table, String> {
 	public List<Registration_table> findAllByOrderByJoindateAsc();
+
 	public List<Registration_table> findAllByOrderByPercentageDesc();
+
 	public List<Integer> countByCollege(String college);
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.Jntu.sas.MyrestUrl;
+import com.Jntu.sas.beans.Number_of_colleges;
 
 @Service
 @EnableAutoConfiguration
@@ -18,12 +19,10 @@ public class Addcollege {
 	MyrestUrl resturl;
 
 	@SuppressWarnings("unchecked")
-	public boolean rest(ArrayList<String> list) {
+	public boolean rest(Number_of_colleges collegedetails) {
 		RestTemplate temple = new RestTemplate();
 		String url = resturl.geturl() + "adcollege/";
-		System.out.println(url);
-		ArrayList<String> status = temple.postForObject(url, list, ArrayList.class);
-		System.out.println(status.get(0));
+		ArrayList<String> status = temple.postForObject(url, collegedetails, ArrayList.class);
 		if (!status.isEmpty()) {
 			return true;
 		} else

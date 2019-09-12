@@ -1,4 +1,5 @@
 package com.Jntu.sas.rest;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +22,10 @@ public class Topstudents {
 
 	@RequestMapping(value = "/{code}", method = RequestMethod.GET)
 	public List<Selected_students> meth(@PathVariable String code) {
-		
-		List<Selected_students> list = selected_student_repo.findTop5ByCollegecode(code, new Sort(Sort.Direction.DESC, "percentage"));
-		
-		
-		
-		
+
+		List<Selected_students> list = selected_student_repo.findTop5ByCollegecode(code,
+				new Sort(Sort.Direction.DESC, "percentage"));
+
 		return list;
 	}
 }
