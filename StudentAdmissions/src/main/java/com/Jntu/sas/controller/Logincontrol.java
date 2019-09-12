@@ -9,15 +9,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.Jntu.sas.beans.Admin_table;
-import com.Jntu.sas.business.Login_call;
+import com.Jntu.sas.beans.Admintable;
+import com.Jntu.sas.business.Logincall;
 
 @Controller
-public class Login_control {
+public class Logincontrol {
 	@Autowired
-	Login_call login;
+	Logincall login;
 	@Autowired
-	Admin_table loginbean;
+	Admintable loginbean;
 
 	@RequestMapping("login_admin_home")
 	public ModelAndView home1(String name, String pass, HttpSession session) {

@@ -3,28 +3,29 @@ package com.Jntu.sas.rest;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Jntu.sas.beans.Admin_table;
-import com.Jntu.sas.beans.Number_of_colleges;
-import com.Jntu.sas.repositories.Admin_table_repo;
-import com.Jntu.sas.repositories.Number_of_colleges_repo;
+import com.Jntu.sas.beans.Admintable;
+import com.Jntu.sas.beans.Numberofcolleges;
+import com.Jntu.sas.repositories.Admintablerepo;
+import com.Jntu.sas.repositories.NumberOfCollegesRepo;
 
 @RestController
 @RequestMapping("/adcollege")
-public class AddCollege_rest {
+public class AddCollegeRest {
 	@Autowired
-	Admin_table_repo admin_repo;
+	Admintablerepo admin_repo;
 	@Autowired
-	Number_of_colleges_repo college_repo;
+	NumberOfCollegesRepo college_repo;
 	@Autowired
-	Admin_table admin_entity;
+	Admintable admin_entity;
 
-	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public ArrayList<String> meth(@RequestBody Number_of_colleges college_entity) {
+	@PutMapping(value = "/")
+	public ArrayList<String> meth(@RequestBody Numberofcolleges college_entity) {
 		ArrayList<String> list1 = new ArrayList<>();
 		college_repo.save(college_entity);
 		admin_entity.setId(college_entity.getCollege_name() + college_entity.getCollege_code());
@@ -32,7 +33,7 @@ public class AddCollege_rest {
 				college_entity.getCollege_rank() + college_entity.getCollege_code() + college_entity.getCollege_code());
 		admin_entity.setAdmin(college_entity);
 		admin_repo.save(admin_entity);
-		list1.add("done");
+		list1.add(Messages.getString("AddCollege_rest.0")); //$NON-NLS-1$
 		return list1;
 
 	}

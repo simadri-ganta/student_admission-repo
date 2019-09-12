@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.Jntu.sas.MyrestUrl;
-import com.Jntu.sas.beans.Selected_students;
+import com.Jntu.sas.beans.Selectedstudents;
 
 @Service
 @EnableAutoConfiguration
@@ -22,9 +22,9 @@ public class DepartmentWise {
 	MyrestUrl resturl;
 
 	@SuppressWarnings("unchecked")
-	public ArrayList<List<Selected_students>> getlist(HttpSession session) {
+	public ArrayList<List<Selectedstudents>> getlist(HttpSession session) {
 		RestTemplate temple = new RestTemplate();
-		String url = resturl.geturl() + "departmentwise_request/" + session.getAttribute("code");
+		String url = resturl.geturl() + Messages.getString("DepartmentWise.0") + session.getAttribute(Messages.getString("DepartmentWise.1")); //$NON-NLS-1$ //$NON-NLS-2$
 		return temple.getForObject(url, ArrayList.class);
 	}
 }

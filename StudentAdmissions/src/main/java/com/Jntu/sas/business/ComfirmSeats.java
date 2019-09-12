@@ -22,7 +22,7 @@ public class ComfirmSeats {
 	@SuppressWarnings("unchecked")
 	public ArrayList<Integer> confirm(HttpSession session) {
 		RestTemplate restcall = new RestTemplate();
-		return restcall.getForObject(resturl.geturl() + "Confirm_allotement_rest/" + session.getAttribute("code"),
+		return restcall.getForObject(resturl.geturl() + Messages.getString("ComfirmSeats.0") + session.getAttribute(Messages.getString("ComfirmSeats.1")), //$NON-NLS-1$ //$NON-NLS-2$
 				ArrayList.class);
 	}
 }

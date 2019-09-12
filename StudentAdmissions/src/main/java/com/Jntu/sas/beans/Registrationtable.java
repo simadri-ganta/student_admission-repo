@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-public class Registration_table {
+public class Registrationtable {
 	private int serial_no;
 	@Id
 	private String name;
@@ -95,10 +95,10 @@ public class Registration_table {
 	}
 	@Override
 	public String toString() {
-		return "Registration_table [serial_no=" + serial_no + ", name=" + name + ", board=" + board + ", marks=" + marks
-				+ ", gpa=" + gpa + ", percentage=" + percentage + ", school=" + school + ", department=" + department
-				+ ", college=" + college + ", college_choice2=" + college_choice2 + ", joindate=" + joindate
-				+ ", Status_application=" + Status_application + "]";
+		return Messages.getString("Registration_table.0") + serial_no + Messages.getString("Registration_table.1") + name + Messages.getString("Registration_table.2") + board + Messages.getString("Registration_table.3") + marks //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+				+ Messages.getString("Registration_table.4") + gpa + Messages.getString("Registration_table.5") + percentage + Messages.getString("Registration_table.6") + school + Messages.getString("Registration_table.7") + department //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+				+ Messages.getString("Registration_table.8") + college + Messages.getString("Registration_table.9") + college_choice2 + Messages.getString("Registration_table.10") + joindate //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				+ Messages.getString("Registration_table.11") + Status_application + Messages.getString("Registration_table.12"); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	

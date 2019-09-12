@@ -5,15 +5,15 @@ import java.util.List;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.Jntu.sas.beans.Selected_students;
+import com.Jntu.sas.beans.Selectedstudents;
 
-public interface Selected_students_repo extends JpaRepository<Selected_students, String> {
+public interface SelectedStudentsRepo extends JpaRepository<Selectedstudents, String> {
 	public List<Integer> countByCollegecodeAndAlloteddepartment(String collegecode, String alloteddepartment);
 
-	public List<Selected_students> findAllByCollegecodeAndAlloteddepartment(String collegecode,
+	public List<Selectedstudents> findAllByCollegecodeAndAlloteddepartment(String collegecode,
 			String alloteddepartment);
 
 	public List<Integer> countByCollegecode(String collegecode);
 
-	public List<Selected_students> findTop5ByCollegecode(String collegecode, Sort sort);
+	public List<Selectedstudents> findTop5ByCollegecode(String collegecode, Sort sort);
 }

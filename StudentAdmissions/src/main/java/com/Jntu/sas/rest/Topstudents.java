@@ -4,27 +4,27 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Jntu.sas.beans.Selected_students;
-import com.Jntu.sas.repositories.Selected_students_repo;
+import com.Jntu.sas.beans.Selectedstudents;
+import com.Jntu.sas.repositories.SelectedStudentsRepo;
 
 @RestController
 @RequestMapping("/top10")
 public class Topstudents {
 	@Autowired
-	Selected_students selected_entity;
+	Selectedstudents selected_entity;
 	@Autowired
-	Selected_students_repo selected_student_repo;
+	SelectedStudentsRepo selected_student_repo;
 
-	@RequestMapping(value = "/{code}", method = RequestMethod.GET)
-	public List<Selected_students> meth(@PathVariable String code) {
+	@GetMapping(value = "/{code}")
+	public List<Selectedstudents> meth(@PathVariable String code) {
 
-		List<Selected_students> list = selected_student_repo.findTop5ByCollegecode(code,
-				new Sort(Sort.Direction.DESC, "percentage"));
+		List<Selectedstudents> list = selected_student_repo.findTop5ByCollegecode(code,
+				new Sort(Sort.Direction.DESC, Messages.getString("Topstudents.0"))); //$NON-NLS-1$
 
 		return list;
 	}

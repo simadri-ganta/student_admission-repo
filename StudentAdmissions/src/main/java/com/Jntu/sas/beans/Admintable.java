@@ -10,18 +10,18 @@ import org.springframework.stereotype.Component;
 @Component
 @Entity
 @Table(name = "admin_table")
-public class Admin_table {
+public class Admintable {
 	@Id
 	private String id;
 	private String pass;
 	@OneToOne
-	private Number_of_colleges admin;
+	private Numberofcolleges admin;
 
-	public Number_of_colleges getAdmin() {
+	public Numberofcolleges getAdmin() {
 		return admin;
 	}
 
-	public void setAdmin(Number_of_colleges admin) {
+	public void setAdmin(Numberofcolleges admin) {
 		this.admin = admin;
 	}
 
@@ -43,7 +43,7 @@ public class Admin_table {
 
 	@Override
 	public String toString() {
-		return "Admin_table [id=" + id + " college_code =" + admin + ", pass=" + pass + "]";
+		return Messages.getString("Admin_table.0") + id + Messages.getString("Admin_table.1") + admin + Messages.getString("Admin_table.2") + pass + Messages.getString("Admin_table.3"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 	}
 
 }

@@ -9,12 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.Jntu.sas.business.Status_checking;
+import com.Jntu.sas.business.Statuschecking;
 
 @Controller
-public class Checking_Status {
+public class CheckingStatus {
 	@Autowired
-	Status_checking check;
+	Statuschecking check;
 
 	@RequestMapping("status_check")
 	public ModelAndView home4(String name, String password, HttpSession session) {

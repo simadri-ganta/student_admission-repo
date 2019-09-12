@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-public class Selected_students {
+public class Selectedstudents {
 	@Id
 	private String name;
 	private String board;
@@ -113,10 +113,10 @@ public class Selected_students {
 
 	@Override
 	public String toString() {
-		return "Selected_students [name=" + name + ", board=" + board + ", marks=" + marks + ", gpa=" + gpa
-				+ ", percentage=" + percentage + ", school=" + school + ", department=" + department
-				+ ", alloteddepartment=" + alloteddepartment + ", collegename=" + collegename + ", collegecode="
-				+ collegecode + ", joineddate=" + joineddate + "]";
+		return Messages.getString("Selected_students.0") + name + Messages.getString("Selected_students.1") + board + Messages.getString("Selected_students.2") + marks + Messages.getString("Selected_students.3") + gpa //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+				+ Messages.getString("Selected_students.4") + percentage + Messages.getString("Selected_students.5") + school + Messages.getString("Selected_students.6") + department //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				+ Messages.getString("Selected_students.7") + alloteddepartment + Messages.getString("Selected_students.8") + collegename + Messages.getString("Selected_students.9") //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				+ collegecode + Messages.getString("Selected_students.10") + joineddate + Messages.getString("Selected_students.11"); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 }

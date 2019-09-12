@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-public class Number_of_colleges {
+public class Numberofcolleges {
 	private String college_name;
 	@Id
 	private String college_code;
@@ -39,8 +39,8 @@ public class Number_of_colleges {
 
 	@Override
 	public String toString() {
-		return "Number_of_colleges [college_name=" + college_name + ", college_code=" + college_code + ", college_rank="
-				+ college_rank + "]";
+		return Messages.getString("Number_of_colleges.0") + college_name + Messages.getString("Number_of_colleges.1") + college_code + Messages.getString("Number_of_colleges.2") //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				+ college_rank + Messages.getString("Number_of_colleges.3"); //$NON-NLS-1$
 	}
 
 }

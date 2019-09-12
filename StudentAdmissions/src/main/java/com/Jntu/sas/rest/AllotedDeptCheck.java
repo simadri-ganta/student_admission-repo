@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 @EnableAutoConfiguration
-public class Alloted_dept_check {
+public class AllotedDeptCheck {
 	@Autowired
-	Depart_count count;
+	DepartCount count;
 
 	public String check_and_allot(String department_choice, String college_code) {
 		switch (department_choice) {

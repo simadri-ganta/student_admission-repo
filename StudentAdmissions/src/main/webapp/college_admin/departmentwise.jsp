@@ -1,5 +1,5 @@
 <%@page import="java.util.Map"%>
-<%@page import="com.Jntu.sas.beans.Selected_students"%>
+<%@page import="com.Jntu.sas.beans.Selectedstudents"%>
 <%@page import="java.util.List"%>
 <%@page import="java.lang.reflect.Array"%>
 <%@page import="java.util.Arrays"%>
@@ -47,48 +47,14 @@ body {
 	<h3>cse</h3>
 	<%
 		try {
-			ArrayList<List<Selected_students>> list = (ArrayList<List<Selected_students>>) request.getAttribute("values");
-			List<Selected_students> cse = list.get(0);
-			List<Selected_students> ece = list.get(1);
-			List<Selected_students> it = list.get(2);
-			List<Selected_students> mech = list.get(3);
-			System.out.println("1"+cse+"\n2"+ece+"\n3"+it+"\n4"+mech);
-			
-			Iterator<Selected_students> cseiter=cse.iterator();
-			out.print("<table>");
-			out.print("<tr><th>Name</th>");
-			out.print("<th>Board</th>");
-			out.print("<th>Total marks</th>");
-			out.print("<th>GPA</th>");
-			out.print("<th>Percenatge</th>");
-			out.print("<th>School</th>");
-			out.print("<th>Department</th>");
-			out.print("<th>Alloted department</th>");
-			out.print("<th>college name</th>");
-			out.print("<th>college code</th>");
-			out.print("<th>applied date</th></tr>");
-			while(cseiter.hasNext()){
-				Map<String,String> current=(Map)cseiter.next();
-				
-				out.print("<tr><td>"+current.toString().split(",")[0].toString().split("=")[1]+"</td>");
-				out.print("<td>"+current.toString().split(",")[1].toString().split("=")[1]+"</td>");
-				out.print("<td>"+current.toString().split(",")[2].toString().split("=")[1]+"</td>");
-				out.print("<td>"+current.toString().split(",")[3].toString().split("=")[1]+"</td>");
-				out.print("<td>"+current.toString().split(",")[4].toString().split("=")[1]+"</td>");
-				out.print("<td>"+current.toString().split(",")[5].toString().split("=")[1]+"</td>");
-				out.print("<td>"+current.toString().split(",")[6].toString().split("=")[1]+"</td>");
-				out.print("<td>"+current.toString().split(",")[7].toString().split("=")[1]+"</td>");
-				out.print("<td>"+current.toString().split(",")[8].toString().split("=")[1]+"</td>");
-				out.print("<td>"+current.toString().split(",")[9].toString().split("=")[1]+"</td>");
-				out.print("<td>"+current.toString().split(",")[10].toString().split("=")[1]+"</td></tr>");
+		ArrayList<List<Selectedstudents>> list = (ArrayList<List<Selectedstudents>>) request.getAttribute("values");
+		List<Selectedstudents> cse = list.get(0);
+		List<Selectedstudents> ece = list.get(1);
+		List<Selectedstudents> it = list.get(2);
+		List<Selectedstudents> mech = list.get(3);
+		System.out.println("1"+cse+"\n2"+ece+"\n3"+it+"\n4"+mech);
 		
-			}out.print("</table>");
-			%>
-	</table>
-<h3>ece</h3>
-	<table>
-		<%Iterator<Selected_students> eceiter=ece.iterator();
-		out.print("<table>");
+		Iterator<Selectedstudents> cseiter=cse.iterator();
 		out.print("<table>");
 		out.print("<tr><th>Name</th>");
 		out.print("<th>Board</th>");
@@ -101,7 +67,42 @@ body {
 		out.print("<th>college name</th>");
 		out.print("<th>college code</th>");
 		out.print("<th>applied date</th></tr>");
-		while(eceiter.hasNext()){
+		while(cseiter.hasNext()){
+			Map<String,String> current=(Map)cseiter.next();
+			
+			out.print("<tr><td>"+current.toString().split(",")[0].toString().split("=")[1]+"</td>");
+			out.print("<td>"+current.toString().split(",")[1].toString().split("=")[1]+"</td>");
+			out.print("<td>"+current.toString().split(",")[2].toString().split("=")[1]+"</td>");
+			out.print("<td>"+current.toString().split(",")[3].toString().split("=")[1]+"</td>");
+			out.print("<td>"+current.toString().split(",")[4].toString().split("=")[1]+"</td>");
+			out.print("<td>"+current.toString().split(",")[5].toString().split("=")[1]+"</td>");
+			out.print("<td>"+current.toString().split(",")[6].toString().split("=")[1]+"</td>");
+			out.print("<td>"+current.toString().split(",")[7].toString().split("=")[1]+"</td>");
+			out.print("<td>"+current.toString().split(",")[8].toString().split("=")[1]+"</td>");
+			out.print("<td>"+current.toString().split(",")[9].toString().split("=")[1]+"</td>");
+			out.print("<td>"+current.toString().split(",")[10].toString().split("=")[1]+"</td></tr>");
+			
+		}out.print("</table>");
+	%>
+	</table>
+<h3>ece</h3>
+	<table>
+		<%
+			Iterator<Selectedstudents> eceiter=ece.iterator();
+				out.print("<table>");
+				out.print("<table>");
+				out.print("<tr><th>Name</th>");
+				out.print("<th>Board</th>");
+				out.print("<th>Total marks</th>");
+				out.print("<th>GPA</th>");
+				out.print("<th>Percenatge</th>");
+				out.print("<th>School</th>");
+				out.print("<th>Department</th>");
+				out.print("<th>Alloted department</th>");
+				out.print("<th>college name</th>");
+				out.print("<th>college code</th>");
+				out.print("<th>applied date</th></tr>");
+				while(eceiter.hasNext()){
 			Map<String,String> current=(Map)eceiter.next();
 			
 			out.print("<tr><td>"+current.toString().split(",")[0].toString().split("=")[1]+"</td>");
@@ -115,28 +116,29 @@ body {
 			out.print("<td>"+current.toString().split(",")[8].toString().split("=")[1]+"</td>");
 			out.print("<td>"+current.toString().split(",")[9].toString().split("=")[1]+"</td>");
 			out.print("<td>"+current.toString().split(",")[10].toString().split("=")[1]+"</td></tr>");
-	
-		}out.print("</table>");
-			%>
+			
+				}out.print("</table>");
+		%>
 	</table>
 <h3>it</h3>
 
 	<table>
-		<%Iterator<Selected_students> ititer=it.iterator();
-		out.print("<table>");
-		out.print("<table>");
-		out.print("<tr><th>Name</th>");
-		out.print("<th>Board</th>");
-		out.print("<th>Total marks</th>");
-		out.print("<th>GPA</th>");
-		out.print("<th>Percenatge</th>");
-		out.print("<th>School</th>");
-		out.print("<th>Department</th>");
-		out.print("<th>Alloted department</th>");
-		out.print("<th>college name</th>");
-		out.print("<th>college code</th>");
-		out.print("<th>applied date</th></tr>");
-		while(ititer.hasNext()){
+		<%
+			Iterator<Selectedstudents> ititer=it.iterator();
+				out.print("<table>");
+				out.print("<table>");
+				out.print("<tr><th>Name</th>");
+				out.print("<th>Board</th>");
+				out.print("<th>Total marks</th>");
+				out.print("<th>GPA</th>");
+				out.print("<th>Percenatge</th>");
+				out.print("<th>School</th>");
+				out.print("<th>Department</th>");
+				out.print("<th>Alloted department</th>");
+				out.print("<th>college name</th>");
+				out.print("<th>college code</th>");
+				out.print("<th>applied date</th></tr>");
+				while(ititer.hasNext()){
 			Map<String,String> current=(Map)ititer.next();
 			
 			out.print("<tr><td>"+current.toString().split(",")[0].toString().split("=")[1]+"</td>");
@@ -150,29 +152,29 @@ body {
 			out.print("<td>"+current.toString().split(",")[8].toString().split("=")[1]+"</td>");
 			out.print("<td>"+current.toString().split(",")[9].toString().split("=")[1]+"</td>");
 			out.print("<td>"+current.toString().split(",")[10].toString().split("=")[1]+"</td></tr>");
-	
-		}out.print("</table>");
-		
-			%>
+			
+				}out.print("</table>");
+		%>
 	</table>
 
 <h3>mech</h3>
 	<table>
-		<%Iterator<Selected_students> mechiter=mech.iterator();
-		out.print("<table>");
-		out.print("<table>");
-		out.print("<tr><th>Name</th>");
-		out.print("<th>Board</th>");
-		out.print("<th>Total marks</th>");
-		out.print("<th>GPA</th>");
-		out.print("<th>Percenatge</th>");
-		out.print("<th>School</th>");
-		out.print("<th>Department</th>");
-		out.print("<th>Alloted department</th>");
-		out.print("<th>college name</th>");
-		out.print("<th>college code</th>");
-		out.print("<th>applied date</th></tr>");
-		while(mechiter.hasNext()){
+		<%
+			Iterator<Selectedstudents> mechiter=mech.iterator();
+				out.print("<table>");
+				out.print("<table>");
+				out.print("<tr><th>Name</th>");
+				out.print("<th>Board</th>");
+				out.print("<th>Total marks</th>");
+				out.print("<th>GPA</th>");
+				out.print("<th>Percenatge</th>");
+				out.print("<th>School</th>");
+				out.print("<th>Department</th>");
+				out.print("<th>Alloted department</th>");
+				out.print("<th>college name</th>");
+				out.print("<th>college code</th>");
+				out.print("<th>applied date</th></tr>");
+				while(mechiter.hasNext()){
 			Map<String,String> current=(Map)mechiter.next();
 			
 			out.print("<tr><td>"+current.toString().split(",")[0].toString().split("=")[1]+"</td>");
@@ -186,10 +188,10 @@ body {
 			out.print("<td>"+current.toString().split(",")[8].toString().split("=")[1]+"</td>");
 			out.print("<td>"+current.toString().split(",")[9].toString().split("=")[1]+"</td>");
 			out.print("<td>"+current.toString().split(",")[10].toString().split("=")[1]+"</td></tr>");
-	out.print("</table>");
-	
-		}
-			%>
+			out.print("</table>");
+			
+				}
+		%>
 	</table>
 
 

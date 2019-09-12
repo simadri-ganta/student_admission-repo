@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.Jntu.sas.MyrestUrl;
-import com.Jntu.sas.beans.Registration_table;
+import com.Jntu.sas.beans.Registrationtable;
 
 @Service
 @EnableAutoConfiguration
@@ -18,10 +18,10 @@ public class NewEntry {
 	@Autowired
 	MyrestUrl resturl;
     @Autowired
-    Registration_table studentdetails;
-	public boolean send(Registration_table studentdetails) {
+    Registrationtable studentdetails;
+	public boolean send(Registrationtable studentdetails) {
 		RestTemplate restcall = new RestTemplate();
-		if (!restcall.postForObject(resturl.geturl() + "new_applicantion/", studentdetails, ArrayList.class).isEmpty())
+		if (!restcall.postForObject(resturl.geturl() + Messages.getString("NewEntry.0"), studentdetails, ArrayList.class).isEmpty()) //$NON-NLS-1$
 			return true;
 		else
 			return false;

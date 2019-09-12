@@ -5,52 +5,52 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Jntu.sas.beans.Registration_table;
-import com.Jntu.sas.beans.Selected_students;
-import com.Jntu.sas.repositories.Number_of_colleges_repo;
-import com.Jntu.sas.repositories.Registration_table_repo;
-import com.Jntu.sas.repositories.Selected_students_repo;
+import com.Jntu.sas.beans.Registrationtable;
+import com.Jntu.sas.beans.Selectedstudents;
+import com.Jntu.sas.repositories.NumberOfCollegesRepo;
+import com.Jntu.sas.repositories.RegistrationTableRepo;
+import com.Jntu.sas.repositories.SelectedStudentsRepo;
 
 @RestController
 @RequestMapping("/Confirm_allotement_rest")
-public class Confirm_allotement_rest {
+public class ConfirmAllotementRest {
 	@Autowired
-	Number_of_colleges_repo college_repo;
+	NumberOfCollegesRepo college_repo;
 	@Autowired
-	Alloted_dept_check chech_depart;
+	AllotedDeptCheck chech_depart;
 	@Autowired
-	Registration_table registration_entity;
+	Registrationtable registration_entity;
 	@Autowired
-	Registration_table_repo registration_repo;
+	RegistrationTableRepo registration_repo;
 	@Autowired
-	Selected_students selected_entity;
+	Selectedstudents selected_entity;
 	@Autowired
-	Selected_students_repo selected_student_repo;
+	SelectedStudentsRepo selected_student_repo;
 
-	@RequestMapping(value = "/{code}", method = RequestMethod.GET)
+	@GetMapping(value = "/{code}")
 	public ArrayList<Integer> meth(@PathVariable String code) {
-		System.out.println("in rest");
-		List<Registration_table> list = registration_repo.findAllByOrderByJoindateAsc();
+		System.out.println(Messages.getString("Confirm_allotement_rest.0")); //$NON-NLS-1$
+		List<Registrationtable> list = registration_repo.findAllByOrderByJoindateAsc();
 		System.out.println(list);
-		Iterator<Registration_table> iter = list.iterator();
-		ArrayList<Registration_table> resultlist = new ArrayList<Registration_table>();
+		Iterator<Registrationtable> iter = list.iterator();
+		ArrayList<Registrationtable> resultlist = new ArrayList<Registrationtable>();
 		while (iter.hasNext()) {
-			Registration_table object = iter.next();
+			Registrationtable object = iter.next();
 			if (object.getPercentage() > 89 && object.getCollege().equals(code)) {
 				resultlist.add(object);
 			}
 
 		}
-		List<Registration_table> list1 = registration_repo.findAllByOrderByPercentageDesc();
+		List<Registrationtable> list1 = registration_repo.findAllByOrderByPercentageDesc();
 		System.out.println(list1);
-		Iterator<Registration_table> iter1 = list1.iterator();
+		Iterator<Registrationtable> iter1 = list1.iterator();
 		while (iter1.hasNext()) {
-			Registration_table object1 = iter1.next();
+			Registrationtable object1 = iter1.next();
 			if (object1.getPercentage() < 90 && object1.getCollege().equals(code)) {
 				resultlist.add(object1);
 			}
@@ -58,14 +58,14 @@ public class Confirm_allotement_rest {
 		}
 		for (int i = 0; i < resultlist.size(); i++) {
 			System.out.println(resultlist.get(i).toString());
-			System.out.println("/n");
+			System.out.println(Messages.getString("Confirm_allotement_rest.1")); //$NON-NLS-1$
 		}
-		Iterator<Registration_table> iterate = resultlist.iterator();
+		Iterator<Registrationtable> iterate = resultlist.iterator();
 		int i = 1, count = 0;
 		while (iterate.hasNext()) {
-			Registration_table eachobject = iterate.next();
+			Registrationtable eachobject = iterate.next();
 			String status = chech_depart.check_and_allot(eachobject.getDepartment(), code);
-			if (!status.equals("no_seat") && !status.equals("no_department")) {
+			if (!status.equals(Messages.getString("Confirm_allotement_rest.2")) && !status.equals(Messages.getString("Confirm_allotement_rest.3"))) { //$NON-NLS-1$ //$NON-NLS-2$
 				selected_entity.setName(eachobject.getName());
 				selected_entity.setMarks(eachobject.getMarks());
 				selected_entity.setGpa(eachobject.getGpa());
@@ -78,20 +78,20 @@ public class Confirm_allotement_rest {
 				selected_entity.setDepartment(eachobject.getDepartment());
 				selected_entity.setCollegename(college_repo.findById(eachobject.getCollege()).get().getCollege_name());
 				System.out.println(i);
-				registration_repo.findById(eachobject.getName()).get().setStatus_application("accepted");
+				registration_repo.findById(eachobject.getName()).get().setStatus_application(Messages.getString("Confirm_allotement_rest.4")); //$NON-NLS-1$
 				selected_student_repo.save(selected_entity);
 				count++;
 
 				System.out.println(i++);
 
 			} else {
-				System.out.println("reject");
+				System.out.println(Messages.getString("Confirm_allotement_rest.5")); //$NON-NLS-1$
 				registration_entity = registration_repo.findById(eachobject.getName()).get();
-				if (registration_entity.getStatus_application().equals("pending")) {
-					registration_entity.setStatus_application("rejected");
+				if (registration_entity.getStatus_application().equals(Messages.getString("Confirm_allotement_rest.6"))) { //$NON-NLS-1$
+					registration_entity.setStatus_application(Messages.getString("Confirm_allotement_rest.7")); //$NON-NLS-1$
 					registration_repo.save(registration_entity);
 				}
-				System.out.println("reject");
+				System.out.println(Messages.getString("Confirm_allotement_rest.8")); //$NON-NLS-1$
 			}
 
 		}

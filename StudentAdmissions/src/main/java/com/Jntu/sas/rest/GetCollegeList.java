@@ -5,36 +5,32 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Jntu.sas.beans.Number_of_colleges;
-import com.Jntu.sas.repositories.Number_of_colleges_repo;
+import com.Jntu.sas.beans.Numberofcolleges;
+import com.Jntu.sas.repositories.NumberOfCollegesRepo;
 
 @RestController
 @RequestMapping("/getcollegelist")
-public class Get_college_list {
+public class GetCollegeList {
 	@Autowired
-	Number_of_colleges college_entity;
+	Numberofcolleges college_entity;
 	@Autowired
-	Number_of_colleges_repo college_repo;
+	NumberOfCollegesRepo college_repo;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@GetMapping(value = "/")
 	public ArrayList<String> meth() {
-		System.out.println(" ciming");
 		ArrayList<String> list1 = new ArrayList<>();
-		List<Number_of_colleges> values = college_repo.findAll();
-
-		Iterator<Number_of_colleges> iter = values.iterator();
+		List<Numberofcolleges> values = college_repo.findAll();
+		Iterator<Numberofcolleges> iter = values.iterator();
 		iter.next();
 		while (iter.hasNext()) {
-			Number_of_colleges college_record = iter.next();
+			Numberofcolleges college_record = iter.next();
 			list1.add(college_record.getCollege_code());
 			list1.add(college_record.getCollege_name());
 		}
-
-		System.out.println(list1.toString());
 		return list1;
 
 	}

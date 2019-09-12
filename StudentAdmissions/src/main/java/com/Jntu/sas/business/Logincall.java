@@ -9,19 +9,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.Jntu.sas.MyrestUrl;
-import com.Jntu.sas.beans.Admin_table;
+import com.Jntu.sas.beans.Admintable;
 
 @Service
 @EnableAutoConfiguration
 @Component
-public class Login_call {
+public class Logincall {
 	@Autowired
 	MyrestUrl resturl;
 
 	@SuppressWarnings("unchecked")
-	public ArrayList<String> request(Admin_table loginbean) {
+	public ArrayList<String> request(Admintable loginbean) {
 		RestTemplate temple = new RestTemplate();
-		String url = resturl.geturl() + "login/";
+		String url = resturl.geturl() + Messages.getString("Login_call.0"); //$NON-NLS-1$
 		return temple.postForObject(url, loginbean, ArrayList.class);
 	}
 }
