@@ -10,13 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Jntu.sas.beans.Admintable;
+import com.Jntu.sas.exceptions.InValidCredentials;
+import com.Jntu.sas.exceptions.UnAuthorizedException;
 import com.Jntu.sas.repositories.Admintablerepo;
 import com.Jntu.sas.repositories.RegistrationTableRepo;
 import com.Jntu.sas.repositories.SelectedStudentsRepo;
 
 @RestController
 @RequestMapping("/login")
-public class Login{
+public class Login {
 	@Autowired
 	Admintablerepo repo;
 	@Autowired
@@ -25,10 +27,12 @@ public class Login{
 	SelectedStudentsRepo selected_repo;
 
 	@PostMapping(value = "/")
-	public ArrayList<String> meth(@RequestBody Admintable list){
-		System.out.println(Messages.getString("login.0") + list.toString()); //$NON-NLS-1$
+	public ArrayList<String> meth(@RequestBody Admintable list) {
 		ArrayList<String> list1 = new ArrayList<>();
 		Optional<Admintable> object = repo.findById(list.getId());
+		if (object.isEmpty()) {
+			throw new UnAuthorizedException("invalid user");
+		}
 		object.ifPresent(Admin_table -> {
 			if (Admin_table.getPass().equals(list.getPass())) {
 				list1.add(Messages.getString("login.1")); //$NON-NLS-1$
@@ -40,7 +44,8 @@ public class Login{
 							.toString());
 				}
 			} else
-				list1.add(Messages.getString("login.3")); //$NON-NLS-1$
+
+				throw new InValidCredentials("wrong pass");
 
 		});
 		return list1;
