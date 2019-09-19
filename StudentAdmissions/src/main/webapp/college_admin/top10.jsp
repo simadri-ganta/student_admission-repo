@@ -1,6 +1,6 @@
 <%@page import="java.util.Map"%>
 <%@page import="java.util.Iterator"%>
-<%@page import="com.Jntu.sas.beans.Selectedstudents"%>
+<%@page import="com.jntu.sas.beans.Student"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -42,8 +42,8 @@ body {
 	<%
 		if (request.getAttribute("details") != null) {
 
-		List<Selectedstudents> list = (List<Selectedstudents>) request.getAttribute("details");
-		Iterator<Selectedstudents> list1 = list.iterator();
+		List<Student> list = (List<Student>) request.getAttribute("details");
+		Iterator<Student> list1 = list.iterator();
 		out.print("<table>");
 		out.print("<tr><th>Name</th>");
 		out.print("<th>Board</th>");

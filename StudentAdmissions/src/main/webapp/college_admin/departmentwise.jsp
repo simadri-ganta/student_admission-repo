@@ -1,5 +1,5 @@
 <%@page import="java.util.Map"%>
-<%@page import="com.Jntu.sas.beans.Selectedstudents"%>
+<%@page import="com.jntu.sas.beans.Student"%>
 <%@page import="java.util.List"%>
 <%@page import="java.lang.reflect.Array"%>
 <%@page import="java.util.Arrays"%>
@@ -47,14 +47,14 @@ body {
 	<h3>cse</h3>
 	<%
 		try {
-		ArrayList<List<Selectedstudents>> list = (ArrayList<List<Selectedstudents>>) request.getAttribute("values");
-		List<Selectedstudents> cse = list.get(0);
-		List<Selectedstudents> ece = list.get(1);
-		List<Selectedstudents> it = list.get(2);
-		List<Selectedstudents> mech = list.get(3);
+		ArrayList<List<Student>> list = (ArrayList<List<Student>>) request.getAttribute("values");
+		List<Student> cse = list.get(0);
+		List<Student> ece = list.get(1);
+		List<Student> it = list.get(2);
+		List<Student> mech = list.get(3);
 		System.out.println("1"+cse+"\n2"+ece+"\n3"+it+"\n4"+mech);
 		
-		Iterator<Selectedstudents> cseiter=cse.iterator();
+		Iterator<Student> cseiter=cse.iterator();
 		out.print("<table>");
 		out.print("<tr><th>Name</th>");
 		out.print("<th>Board</th>");
@@ -88,7 +88,7 @@ body {
 <h3>ece</h3>
 	<table>
 		<%
-			Iterator<Selectedstudents> eceiter=ece.iterator();
+			Iterator<Student> eceiter=ece.iterator();
 				out.print("<table>");
 				out.print("<table>");
 				out.print("<tr><th>Name</th>");
@@ -124,7 +124,7 @@ body {
 
 	<table>
 		<%
-			Iterator<Selectedstudents> ititer=it.iterator();
+			Iterator<Student> ititer=it.iterator();
 				out.print("<table>");
 				out.print("<table>");
 				out.print("<tr><th>Name</th>");
@@ -160,7 +160,7 @@ body {
 <h3>mech</h3>
 	<table>
 		<%
-			Iterator<Selectedstudents> mechiter=mech.iterator();
+			Iterator<Student> mechiter=mech.iterator();
 				out.print("<table>");
 				out.print("<table>");
 				out.print("<tr><th>Name</th>");
