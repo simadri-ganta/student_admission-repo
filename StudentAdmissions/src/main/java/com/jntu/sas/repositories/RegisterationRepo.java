@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.jntu.sas.beans.Registration;
 
 @Repository
-public interface RegistrationTableRepo extends JpaRepository<Registration, String> {
+public interface RegisterationRepo extends JpaRepository<Registration, String> {
 	public List<Registration> findAllByOrderByJoindateAsc();
 
 	public List<Registration> findAllByOrderByPercentageDesc();

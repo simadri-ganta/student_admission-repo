@@ -16,7 +16,7 @@ import com.jntu.sas.beans.Admin;
 import com.jntu.sas.business.LoginCall;
 
 @Controller
-public class Logincontrol {
+public class LoginHome {
 	@Autowired
 	LoginCall login;
 	@Autowired

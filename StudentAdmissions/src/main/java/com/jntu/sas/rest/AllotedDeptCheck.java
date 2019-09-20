@@ -13,13 +13,13 @@ public class AllotedDeptCheck {
 	public String check_and_allot(String department_choice, String college_code) {
 		switch (department_choice) {
 		case "cse":
-			if (count.cse(college_code) < 5) { // cse count
+			if (count.cse(college_code) < 5) {
 				return "cse";
 			} else {
 				return "no_seat";
 			}
 		case "ece":
-			if (count.ece(college_code) < 5) { // ece count
+			if (count.ece(college_code) < 5) { 
 				System.out.println("ece");
 				return "ece";
 
@@ -30,7 +30,7 @@ public class AllotedDeptCheck {
 
 		case "it":
 
-			if (count.it(college_code) < 5) { // It count
+			if (count.it(college_code) < 5) { 
 
 				return "it";
 			} else {
@@ -39,8 +39,8 @@ public class AllotedDeptCheck {
 
 		case "mech":
 
-			if (count.mech(college_code) < 5) { // mechanicalcount
-				System.out.println("mech");
+			if (count.mech(college_code) < 5) {
+
 				return "mech";
 			} else {
 				return "no_seat";

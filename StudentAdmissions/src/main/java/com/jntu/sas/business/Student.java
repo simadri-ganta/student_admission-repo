@@ -16,9 +16,10 @@ import com.jntu.sas.constants.MyrestUrl;
 @Service
 @EnableAutoConfiguration
 @Component
-public class StatusChecking {
+public class Student {
 	@Autowired
 	MyrestUrl resturl;
+	
 	@Autowired
 	Registration studentdetails;
 
@@ -33,6 +34,13 @@ public class StatusChecking {
 		String url = resturl.geturl() + "Status_check/";
 		return restcall.postForObject(url, studentdetails, ArrayList.class);
 
+	}
+	public boolean send(Registration studentdetails) {
+		RestTemplate restcall = new RestTemplate();
+		if (!restcall.postForObject(resturl.geturl() + "new_applicantion/", studentdetails, ArrayList.class).isEmpty()) //$NON-NLS-1$
+			return true;
+		else
+			return false;
 	}
 
 }

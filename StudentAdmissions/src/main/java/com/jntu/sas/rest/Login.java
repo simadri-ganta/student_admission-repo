@@ -12,19 +12,19 @@ import org.springframework.web.bind.annotation.RestController;
 import com.jntu.sas.beans.Admin;
 import com.jntu.sas.exceptions.InValidCredentials;
 import com.jntu.sas.exceptions.UnAuthorizedException;
-import com.jntu.sas.repositories.Admintablerepo;
-import com.jntu.sas.repositories.RegistrationTableRepo;
-import com.jntu.sas.repositories.SelectedStudentsRepo;
+import com.jntu.sas.repositories.AdminRepo;
+import com.jntu.sas.repositories.RegisterationRepo;
+import com.jntu.sas.repositories.StudentsRepo;
 
 @RestController
 @RequestMapping("/login")
 public class Login {
 	@Autowired
-	Admintablerepo repo;
+	AdminRepo repo;
 	@Autowired
-	RegistrationTableRepo regsiteration_repo;
+	RegisterationRepo regsiteration_repo;
 	@Autowired
-	SelectedStudentsRepo selected_repo;
+	StudentsRepo selected_repo;
 
 	@PostMapping(value = "/")
 	public ArrayList<String> meth(@RequestBody Admin list) {

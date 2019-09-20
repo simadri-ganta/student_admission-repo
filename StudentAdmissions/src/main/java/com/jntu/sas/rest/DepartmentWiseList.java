@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jntu.sas.beans.Student;
-import com.jntu.sas.repositories.SelectedStudentsRepo;
+import com.jntu.sas.repositories.StudentsRepo;
 
 @RestController
 @RequestMapping("departmentwise_request")
 public class DepartmentWiseList {
 	@Autowired
-	SelectedStudentsRepo selected_students_repo;
+	StudentsRepo selected_students_repo;
 
 	@GetMapping(value = "/{code}")
 	public ArrayList<List<Student>> meth(@PathVariable String code) {

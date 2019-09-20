@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jntu.sas.beans.Registration;
-import com.jntu.sas.repositories.RegistrationTableRepo;
+import com.jntu.sas.repositories.RegisterationRepo;
 
 @RestController
 @RequestMapping("changeapplication")
@@ -18,7 +18,7 @@ public class SecondChoice {
 	@Autowired
 	Registration registeration_entity;
 	@Autowired
-	RegistrationTableRepo registeration_repo;
+	RegisterationRepo registeration_repo;
 
 	@GetMapping(value = "/{name}/{code}/")
 	public ArrayList<String> meth(@PathVariable String name, @PathVariable String code) {

@@ -12,25 +12,25 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jntu.sas.beans.Registration;
 import com.jntu.sas.beans.Student;
-import com.jntu.sas.repositories.NumberOfCollegesRepo;
-import com.jntu.sas.repositories.RegistrationTableRepo;
-import com.jntu.sas.repositories.SelectedStudentsRepo;
+import com.jntu.sas.repositories.CollegeRepo;
+import com.jntu.sas.repositories.RegisterationRepo;
+import com.jntu.sas.repositories.StudentsRepo;
 
 @RestController
 @RequestMapping("/Confirm_allotement_rest")
 public class ConfirmAllotement {
 	@Autowired
-	NumberOfCollegesRepo college_repo;
+	CollegeRepo college_repo;
 	@Autowired
 	AllotedDeptCheck checkDepart;
 	@Autowired
 	Registration registration;
 	@Autowired
-	RegistrationTableRepo registrationRepo;
+	RegisterationRepo registrationRepo;
 	@Autowired
 	Student student;
 	@Autowired
-	SelectedStudentsRepo studentRepo;
+	StudentsRepo studentRepo;
 
 	@GetMapping(value = "/{code}")
 	public ArrayList<Integer> meth(@PathVariable String code) {

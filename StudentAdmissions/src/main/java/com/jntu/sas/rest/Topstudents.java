@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jntu.sas.beans.Student;
-import com.jntu.sas.repositories.SelectedStudentsRepo;
+import com.jntu.sas.repositories.StudentsRepo;
 
 @RestController
 @RequestMapping("/top10")
@@ -18,7 +18,7 @@ public class Topstudents {
 	@Autowired
 	Student selected_entity;
 	@Autowired
-	SelectedStudentsRepo selected_student_repo;
+	StudentsRepo selected_student_repo;
 
 	@GetMapping(value = "/{code}")
 	public List<Student> meth(@PathVariable String code) {

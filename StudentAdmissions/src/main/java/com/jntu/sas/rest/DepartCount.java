@@ -5,13 +5,13 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Service;
 
 import com.jntu.sas.beans.Student;
-import com.jntu.sas.repositories.SelectedStudentsRepo;
+import com.jntu.sas.repositories.StudentsRepo;
 
 @Service
 @EnableAutoConfiguration
 public class DepartCount {
 	@Autowired
-	SelectedStudentsRepo selected_student_repo;
+	StudentsRepo selected_student_repo;
 	@Autowired
 	Student selected_student_entity;
 

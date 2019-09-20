@@ -16,6 +16,11 @@ public class Registration {
 	private String gpa;
 	private int percentage;
 	private String school;
+	private String department;
+	private String firstCollege;
+	private String secondCollege;
+	private Date joinDate = new Date();
+	private String applicationStatus;
 
 	public String getName() {
 		return name;
@@ -104,11 +109,5 @@ public class Registration {
 	public void setApplicationStatus(String applicationStatus) {
 		this.applicationStatus = applicationStatus;
 	}
-
-	private String department;
-	private String firstCollege;
-	private String secondCollege;
-	private Date joinDate = new Date();
-	private String applicationStatus;
 
 }

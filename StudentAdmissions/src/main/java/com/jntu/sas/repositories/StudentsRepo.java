@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.jntu.sas.beans.Student;
 
-public interface SelectedStudentsRepo extends JpaRepository<Student, String> {
+public interface StudentsRepo extends JpaRepository<Student, String> {
 	public List<Integer> countByCollegecodeAndAlloteddepartment(String collegecode, String alloteddepartment);
 
 	public List<Student> findAllByCollegecodeAndAlloteddepartment(String collegecode,

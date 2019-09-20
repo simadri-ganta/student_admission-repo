@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jntu.sas.beans.College;
-import com.jntu.sas.repositories.NumberOfCollegesRepo;
+import com.jntu.sas.repositories.CollegeRepo;
 
 @RestController
 @RequestMapping("/getcollegelist")
@@ -18,7 +18,7 @@ public class GetCollegeList {
 	@Autowired
 	College college;
 	@Autowired
-	NumberOfCollegesRepo collegRepo;
+	CollegeRepo collegRepo;
 
 	@GetMapping(value = "/")
 	public ArrayList<String> meth() {

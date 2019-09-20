@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jntu.sas.beans.Admin;
 import com.jntu.sas.beans.College;
-import com.jntu.sas.repositories.Admintablerepo;
-import com.jntu.sas.repositories.NumberOfCollegesRepo;
+import com.jntu.sas.repositories.AdminRepo;
+import com.jntu.sas.repositories.CollegeRepo;
 
 @RestController
 @RequestMapping("/adcollege")
 public class AddCollege {
 	@Autowired
-	Admintablerepo adminRepo;
+	AdminRepo adminRepo;
 	@Autowired
-	NumberOfCollegesRepo collegeRepo;
+	CollegeRepo collegeRepo;
 	@Autowired
 	Admin admin;
 
@@ -32,7 +32,7 @@ public class AddCollege {
 				college_entity.getRank() + college_entity.getCode() + college_entity.getCode());
 		admin.setAdmin(college_entity);
 		adminRepo.save(admin);
-		list1.add("done"); //$NON-NLS-1$
+		list1.add("done");
 		return list1;
 
 	}
